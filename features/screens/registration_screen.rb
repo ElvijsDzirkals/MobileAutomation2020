@@ -2,29 +2,24 @@ class RegistrationScreen
 
   def initialize
     @register_tab_button = Elements.new(:xpath, '//android.widget.TextView[@text="REGISTER"]')
-    @first_name_field = Elements.new(:xpath, '//*[@resource-id="com.strawberrynetNew.android:id/firstName"]')
-    @last_name_field = Elements.new(:xpath , '//*[@resource-id="com.strawberrynetNew.android:id/lastName"]')
-    @email_field = Elements.new(:xpath , '//*[@resource-id="com.strawberrynetNew.android:id/email"]')
-    @password_field = Elements.new(:xpath , '//*[@resource-id="com.strawberrynetNew.android:id/password"]')
-    @repassword_field = Elements.new(:xpath , '//*[@resource-id="com.strawberrynetNew.android:id/repassword"]')
-    @eye_icons = Elements.new(:xpath , '//android.widget.ImageButton[@content-desc="Show password"]')
+    @first_name_field = Elements.new(:id, 'firstName')
+    @last_name_field = Elements.new(:id , 'lastName')
+    @email_field = Elements.new(:id , 'email')
+    @password_field = Elements.new(:id , 'password')
+    @repassword_field = Elements.new(:id , 'repassword')
+    @eye_icons = Elements.new(:id, 'text_input_password_toggle')
     @register_button = Elements.new(:xpath , '//android.widget.Button[@text="REGISTER"]')
-    @cancel_offer_button = Elements.new(:xpath,'//*[@resource-id="com.strawberrynetNew.android:id/btn_cancel"]')
+    @cancel_offer_button = Elements.new(:id,'btn_cancel')
   end
 
   def click_register_tab_button
     @register_tab_button.click
   end
 
-  def get_register_button_text
-    @register_button.text
+  def click_all_eye_icons
+    @eye_icons.click_every_element_in_the_list
   end
 
-  def verify_first_name(actual)
-    actual = @register_button.text
-    expected = "janis"
-    raise "User name is not the same: Expected #{expected} , Actual: #{actual}" unless actual == expected
-  end
   def click_cancel_offer_button
     @cancel_offer_button.click
   end

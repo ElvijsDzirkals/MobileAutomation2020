@@ -19,7 +19,7 @@ Selenium::WebDriver.logger.level = :error
 
 
 Before do
-  @screens = Screens.new
+    @screens = Screens.new
     $driver.start_driver
 end
 
